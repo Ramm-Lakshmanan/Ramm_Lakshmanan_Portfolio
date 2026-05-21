@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tab Bar Branding -->
+<title>RL | Ramm Lakshmanan | Full Stack Developer</title>
+  
+  <!-- Favicon Container -->
+  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22url(%23g)%22/><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%232563eb%22/><stop offset=%22100%25%22 stop-color=%22%2306b6d4%22/></linearGradient></defs><text y=%22.9em%22 x=%225%22 font-size=%2260%22 font-weight=%22800%22 font-family=%22system-ui%22 fill=%22%23fff%22>RL</text></svg>">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Personal portfolio and live competitive programming dashboard of Ramm Lakshmanan, Software Engineer Intern at Yuga Yatra & Computer Science student at SSN College of Engineering.">
+  <meta name="keywords" content="Ramm Lakshmanan, Software Engineer Intern, SSN College of Engineering, Competitive Programming, Coding Dashboard, LeetCode, Codeforces, CodeChef, GeeksforGeeks, Java, Spring Boot, React">
+  
+  <!-- Open Graph / Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ramm Lakshmanan | Portfolio & Coding Dashboard">
+  <meta property="og:description" content="Explore my software projects and live-syncing competitive coding statistics across LeetCode, Codeforces, CodeChef, and GFG.">
+  <meta property="og:image" content="assets/images/profile-1.jpeg">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container container">
+      <!-- Monogram Branding Logo -->
+      <a href="#home" class="logo" id="nav-logo">
+        <span class="logo-badge">RL</span>
+        <span class="logo-text">Ramm Lakshmanan</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="nav-links">
+        <a href="#home" class="nav-link active ripple-btn">Home</a>
+        <a href="#about" class="nav-link ripple-btn">About</a>
+        <a href="#experience" class="nav-link ripple-btn">Experience</a>
+        <a href="#projects" class="nav-link ripple-btn">Projects</a>
+        <a href="#coding-dashboard" class="nav-link ripple-btn">Coding Dashboard</a>
+        <a href="#skills" class="nav-link ripple-btn">Skills</a>
+        <a href="#contact" class="nav-link ripple-btn">Contact</a>
+        
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
+          <!-- Sun Icon for switching to Light mode -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          <!-- Moon Icon for switching to Dark mode -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Controls Box -->
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">&#x2630;</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="badge badge-glowing">
+            <span class="dot"></span> Open for Internship Opps
+          </span>
+          <span class="badge">SSN CSE 2028</span>
+        </div>
+        <h1 class="hero-title">
+          Hi, I am <br>
+          <span class="text-gradient">Ramm Lakshmanan</span>
+        </h1>
+        <h2 style="font-size: 1.8rem; font-weight: 600; color: var(--color-text-secondary);">
+          I am a <span id="typing-text" class="text-gradient-purple" style="font-family: var(--font-mono);"></span><span class="typing-cursor"></span>
+        </h2>
+        <p class="hero-description">
+          A dedicated Computer Science student and Software Engineer Intern focusing on Data Structures, Algorithms, and clean full-stack architectural design. Experienced in building scalable APIs and responsive, data-driven systems.
+        </p>
+        <div class="hero-actions">
+          <a href="#coding-dashboard" class="btn btn-primary ripple-btn">
+            View Coding Dashboard
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="stroke-width: 2;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </a>
+          <a href="assets/docs/resume.pdf" class="btn btn-secondary ripple-btn" download>
+            Download Resume
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="stroke-width: 2;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <!-- Photo container morphing border -->
+        <div class="profile-wrapper">
+          <div class="profile-inner">
+            <img src="assets/images/profile-1.jpeg" alt="Ramm Lakshmanan profile" class="profile-img" id="hero-profile-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & EDUCATION -->
+  <section class="section-padding reveal" id="about" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Me</h2>
+        <p>Education, Aspirations, & Scholastic Foundation</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-details">
+          <h3 style="font-size: 1.8rem; letter-spacing: -0.5px;">Building Software, Solving Complex Problems</h3>
+          <p class="about-bio">
+            I am currently pursuing a <strong>Bachelor of Engineering in Computer Science and Engineering</strong> at <strong>SSN College of Engineering</strong>, one of India's premier technological institutes.
+          </p>
+          <p class="about-bio">
+            My primary passion lies in algorithmic problem-solving. I spend a significant portion of my time analyzing complexity patterns, studying data structures, and sharpening my programming acumen. Simultaneously, I construct modern full-stack web applications using <strong>Java (Spring Boot)</strong>, <strong>React</strong>, <strong>TypeScript</strong>, and robust relational/non-relational database structures.
+          </p>
+          
+        </div>
+        
+        <div class="education-cards">
+          <!-- SSN College -->
+            <button id="college-coursework-toggle" class="ripple-btn btn btn-secondary">Show Coursework</button>
+          <div class="glass-card education-card">
+            <div class="edu-icon-box">🎓</div>
+            <div class="edu-info">
+              <span class="badge badge-glowing" style="width: fit-content;">Undergraduate</span>
+              <h4>B.E. Computer Science and Engineering</h4>
+              <span class="edu-institution">SSN College of Engineering</span>
+              <div class="edu-meta">
+                <span>2024 - 2028</span>
+                <span>CGPA: <strong>9.01 / 10</strong></span>
+              </div>
+            </div>
+          </div>
+          <ul id="college-coursework" class="coursework-list hidden">
+            <li>Data Structures and Algorithms</li>
+            <li>Object Oriented Programming</li>
+            <li>Database Management Systems</li>
+            <li>Systems</li>
+            <li>Web Technologies</li>
+            <li>Operating Systems</li>
+            <li>Software Engineering</li>
+          </ul>
+          
+          <!-- SSM School -->
+            <button id="school-coursework-toggle" class="ripple-btn btn btn-secondary">Show Subjects</button>
+          <div class="glass-card education-card">
+            <div class="edu-icon-box">🏫</div>
+            <div class="edu-info">
+              <span class="badge" style="width: fit-content;">Senior Secondary</span>
+              <h4>HSC - Science Stream</h4>
+              <span class="edu-institution">Srimathi Sundravalli Memorial School</span>
+              <div class="edu-meta">
+                <span>Completed 2024</span>
+                <span>Score: <strong>97.4%</strong></span>
+              </div>
+            </div>
+          </div>
+          <ul id="school-coursework" class="coursework-list hidden">
+            <li>Chemistry</li>
+            <li>Physics</li>
+            <li>Mathematics</li>
+            <li>Computer Science</li>
+            <li>English</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="section-padding reveal" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <h2>Professional Journey</h2>
+        <p>Software Engineering Internships & Projects</p>
+      </div>
+      
+      <div class="timeline">
+        <!-- Intern Card -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <div class="timeline-header">
+              <div class="role-title">
+                <h3>Software Engineer Intern</h3>
+                <span class="company-title">Yuga Yatra Retail Solutions</span>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">May 2026 - Present</span>
+                <span>Chennai, TN</span>
+              </div>
+            </div>
+            <div class="timeline-desc">
+              <p class="timeline-bullet">
+                Co-architecting a secure, production-grade retail POS storefront service employing Spring Boot microservices and robust database storage.
+              </p>
+              <p class="timeline-bullet">
+                Built asynchronous API modules optimized for handling transactional loads, improving throughput during high-traffic checkout events.
+              </p>
+              <p class="timeline-bullet">
+                Drafted comprehensive unit and integration test coverage across all REST controllers, boosting CI/CD reliability and code quality metrics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section-padding reveal" id="projects" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Engineering Works</h2>
+        <p>Deployments, Repositories, & Architectural Stacks</p>
+      </div>
+      
+      <div class="projects-grid">
+        <!-- POS Card -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="assets/images/retail_management_system.png" alt="Retail Store POS System illustration" class="project-image">
+          </div>
+          <div class="project-meta-row">
+            <h3 class="project-title">Retail POS & Billing System</h3>
+            <div class="project-links">
+              <!-- Exact Extracted Repo Link -->
+              <a href="https://github.com/Ramm-Lakshmanan/Retail_Management_System" target="_blank" class="project-link-icon" title="View Github Repository" aria-label="Github Repo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">
+            A secure full-stack enterprise Storefront Point-of-Sale management layout. Supports barcode ledger logs, real-time bill calculations, employee authorization filters, and transactional history audits.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Spring Boot</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">MongoDB</span>
+          </div>
+        </div>
+
+        <!-- Personal Finance Tracker -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="assets/images/finance_manager.png" alt="Finance Tracker System illustration" class="project-image">
+          </div>
+          <div class="project-meta-row">
+            <h3 class="project-title">Finance & Budget System</h3>
+            <div class="project-links">
+              <!-- Exact Extracted Repo Link -->
+              <a href="https://github.com/Ramm-Lakshmanan/financial-transaction-budget-system" target="_blank" class="project-link-icon" title="View Github Repository" aria-label="Github Repo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">
+            A standalone accounting desktop manager featuring full transactional registers. Leverages direct JDBC connections and transactional operations with MySQL to track monthly income, category budgets, and expense analytics.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Java Core</span>
+            <span class="project-tag">JDBC</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">Swing</span>
+          </div>
+        </div>
+
+        <!-- Pygame Word Scramble -->
+        <div class="glass-card project-card">
+          <div class="project-image-box">
+            <img src="assets/images/word_scramble_game.png" alt="Word Scramble Game illustration" class="project-image">
+          </div>
+          <div class="project-meta-row">
+            <h3 class="project-title">Word Scramble Game</h3>
+            <div class="project-links">
+              <!-- Exact Extracted Repo Link -->
+              <a href="https://github.com/Ramm-Lakshmanan/Scrambled_Word_Game" target="_blank" class="project-link-icon" title="View Github Repository" aria-label="Github Repo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">
+            An interactive educational visual game constructed in Python. Supports scrambled word layouts, high-score tracking tables, progress counters, dynamic audio cues, and custom difficulty level configurations.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python 3</span>
+            <span class="project-tag">Pygame</span>
+            <span class="project-tag">Vector GUI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODING DASHBOARD -->
+  <section class="section-padding reveal" id="coding-dashboard">
+    <div class="container">
+      <div class="section-header">
+        <h2>Coding Dashboard</h2>
+        <p>Live Problem Solving Metrics & Platform Ranks</p>
+      </div>
+
+      <div class="dashboard-container">
+        <!-- Synchronization Status Header -->
+        <div class="glass-card dashboard-header-card">
+          <div class="dashboard-summary-info">
+            <h3>
+              Total DSA Solved: 
+              <span id="global-total-solved" class="text-gradient">793 Problems</span>
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">
+              Aggregating active stats across competitive coding hubs.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="dashboard-sync-status">
+              <span class="sync-pulse" id="status-pulse"></span>
+              <span id="status-text">Live Syncing...</span>
+            </div>
+            <a href="#" id="manual-sync-btn" class="btn btn-secondary" style="padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem;" title="Force Manual Update">
+              Sync Profiles
+            </a>
+          </div>
+        </div>
+
+        <!-- Platforms Layout -->
+        <div class="dashboard-grid">
+          
+          <!-- LeetCode Platform Card -->
+          <div class="glass-card db-platform-card">
+            <div class="db-card-header">
+              <div class="db-platform-identity">
+                <!-- True LeetCode Logo -->
+                <div class="db-platform-logo-container">
+                  <img src="assets/images/leetcode.jpg" alt="LeetCode" class="platform-logo"/>
+                </div>
+                <div class="db-platform-name">
+                  <h4>LeetCode</h4>
+                  <span class="db-platform-handle">@TG28y7ZTaQ</span>
+                </div>
+              </div>
+              <a href="https://leetcode.com/u/TG28y7ZTaQ/" target="_blank" class="db-platform-link" aria-label="LeetCode Profile">
+                Profile ↗
+              </a>
+            </div>
+
+            <div class="db-stats-content">
+              <div class="db-stat-box">
+                <span class="db-stat-label">Total Solved</span>
+                <span class="db-stat-value" id="lc-solved">358</span>
+                <span class="db-stat-subvalue" id="sync-time">SSN CSE Peak</span>
+              </div>
+              <div class="db-stat-box">
+                <span class="db-stat-label">Max Rating</span>
+                <span class="db-stat-value" id="lc-rating">1647</span>
+                <span class="db-stat-subvalue" id="lc-ranking">Top 20% globally</span>
+              </div>
+
+              <!-- Radial breakdown chart -->
+              <div class="lc-visualizer">
+                <div class="lc-ring-box">
+                  <svg class="lc-ring-svg">
+                    <defs>
+                      <linearGradient id="lc-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2563eb" />
+                        <stop offset="100%" stop-color="#06b6d4" />
+                      </linearGradient>
+                    </defs>
+                    <circle class="lc-ring-bg" cx="45" cy="45" r="40" />
+                    <circle class="lc-ring-fill" id="lc-ring-fill" cx="45" cy="45" r="40" />
+                  </svg>
+                  <div class="lc-ring-text">
+                    <span class="lc-ring-num" id="lc-solved-ring">358</span>
+                    <span class="lc-ring-lbl">Solved</span>
+                  </div>
+                </div>
+
+                <div class="lc-bars">
+                  <!-- Easy -->
+                  <div class="lc-bar-item">
+                    <div class="lc-bar-labels">
+                      <span class="lc-bar-name" style="color: #0d9488;">Easy</span>
+                      <span class="lc-bar-numbers" id="lc-easy-num">124</span>
+                    </div>
+                    <div class="lc-bar-track">
+                      <div class="lc-bar-fill lc-fill-easy" id="lc-easy-bar" data-width="34.6%"></div>
+                    </div>
+                  </div>
+                  <!-- Medium -->
+                  <div class="lc-bar-item">
+                    <div class="lc-bar-labels">
+                      <span class="lc-bar-name" style="color: #d97706;">Medium</span>
+                      <span class="lc-bar-numbers" id="lc-medium-num">186</span>
+                    </div>
+                    <div class="lc-bar-track">
+                      <div class="lc-bar-fill lc-fill-medium" id="lc-medium-bar" data-width="51.9%"></div>
+                    </div>
+                  </div>
+                  <!-- Hard -->
+                  <div class="lc-bar-item">
+                    <div class="lc-bar-labels">
+                      <span class="lc-bar-name" style="color: #e11d48;">Hard</span>
+                      <span class="lc-bar-numbers" id="lc-hard-num">48</span>
+                    </div>
+                    <div class="lc-bar-track">
+                      <div class="lc-bar-fill lc-fill-hard" id="lc-hard-bar" data-width="13.5%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Codeforces Platform Card -->
+          <div class="glass-card db-platform-card">
+            <div class="db-card-header">
+              <div class="db-platform-identity">
+                <!-- True Codeforces Logo -->
+                <div class="db-platform-logo-container">
+                  <img src="assets/images/codeforces.png" alt="Codeforces" class="platform-logo"/>
+                </div>
+                <div class="db-platform-name">
+                  <h4>Codeforces</h4>
+                  <span class="db-platform-handle">@Ramm_Lakshmanan</span>
+                </div>
+              </div>
+              <a href="https://codeforces.com/profile/Ramm_Lakshmanan" target="_blank" class="db-platform-link" aria-label="Codeforces Profile">
+                Profile ↗
+              </a>
+            </div>
+
+            <div class="db-stats-content">
+              <div class="db-stat-box">
+                <span class="db-stat-label">Unique Solved</span>
+                <span class="db-stat-value" id="cf-solved">133</span>
+                <span class="db-stat-subvalue">Dynamic unique count</span>
+              </div>
+              <div class="db-stat-box">
+                <span class="db-stat-label">Live Rating</span>
+                <span class="db-stat-value" id="cf-rating">862</span>
+                <span class="db-stat-subvalue" id="cf-max-rating">Max: 1001</span>
+              </div>
+              <div class="db-stat-box" style="grid-column: span 2;">
+                <span class="db-stat-label">Platform Ranking Standings</span>
+                <span class="db-stat-value" id="cf-rank" style="font-size: 1.5rem; color: var(--color-accent-purple);">Newbie</span>
+                <span class="db-stat-subvalue" id="cf-max-rank">Max: Newbie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CodeChef Platform Card -->
+          <div class="glass-card db-platform-card">
+            <div class="db-card-header">
+              <div class="db-platform-identity">
+                <!-- True CodeChef Logo -->
+                <div class="db-platform-logo-container">
+                  <img src="assets/images/Codechf.jpg" alt="CodeChef" class="platform-logo"/>
+                </div>
+                <div class="db-platform-name">
+                  <h4>CodeChef</h4>
+                  <span class="db-platform-handle">@super_wasp_83</span>
+                </div>
+              </div>
+              <a href="https://www.codechef.com/users/super_wasp_83" target="_blank" class="db-platform-link" aria-label="CodeChef Profile">
+                Profile ↗
+              </a>
+            </div>
+
+            <div class="db-stats-content">
+              <div class="db-stat-box">
+                <span class="db-stat-label">Solved Problems</span>
+                <span class="db-stat-value" id="cc-solved">92</span>
+                <span class="db-stat-subvalue">Div 3 submissions</span>
+              </div>
+              <div class="db-stat-box">
+                <span class="db-stat-label">Chef Rating</span>
+                <span class="db-stat-value" id="cc-rating">1530</span>
+                <span class="db-stat-subvalue" id="cc-stars">2★ Category</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- GeeksforGeeks Card -->
+          <div class="glass-card db-platform-card">
+            <div class="db-card-header">
+              <div class="db-platform-identity">
+                <!-- True GeeksforGeeks Logo -->
+                <div class="db-platform-logo-container">
+                  <img src="assets/images/geeksforgeeks.jpg" alt="GeeksforGeeks" class="platform-logo"/>
+                </div>
+                <div class="db-platform-name">
+                  <h4>GeeksforGeeks</h4>
+                  <span class="db-platform-handle">@rammlaksxfl6</span>
+                </div>
+              </div>
+              <a href="https://www.geeksforgeeks.org/profile/rammlaksxfl6" target="_blank" class="db-platform-link" aria-label="GeeksforGeeks Profile">
+                Profile ↗
+              </a>
+            </div>
+
+            <div class="db-stats-content">
+              <div class="db-stat-box">
+                <span class="db-stat-label">Solved Problems</span>
+                <span class="db-stat-value" id="gfg-solved">210</span>
+                <span class="db-stat-subvalue">Advanced structures</span>
+              </div>
+              <div class="db-stat-box">
+                <span class="db-stat-label">Score Metrics</span>
+                <span class="db-stat-value" id="gfg-score">954</span>
+                <span class="db-stat-subvalue" id="gfg-rank">SSN Rank: #18</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dynamic aggregation and hub redirect -->
+        <div class="dashboard-footer-actions">
+          <!-- True Codolio Redirect SVG Logo and button -->
+          <a href="https://codolio.com/profile/Ramm_Lakshmanan" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
+              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+            </svg>
+            Verify Aggregate on Codolio ↗
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section class="section-padding reveal" id="skills" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Expertise & Technologies</h2>
+        <p>Dynamic Stack Categories & Language Indicators</p>
+      </div>
+
+      <div class="skills-container">
+        <!-- Interactive Category Switcher -->
+        <div class="skills-tabs">
+          <button class="tab-btn active" data-tab="tab-languages">Languages</button>
+          <button class="tab-btn" data-tab="tab-frameworks">Frameworks & Databases</button>
+          <button class="tab-btn" data-tab="tab-tools">Tools & Architecture</button>
+        </div>
+
+        <!-- Languages -->
+        <div class="skills-tab-content active" id="tab-languages">
+          <!-- Java -->
+          <div class="skill-grid-card java">
+            <div class="skill-logo-wrap">
+              <img src="assets/images/java.png" alt="Java" class="skill-logo"/>
+            </div>
+            <h4>Java</h4>
+            <span class="skill-grid-level">Expert</span>
+          </div>
+          <!-- Python -->
+          <div class="skill-grid-card python">
+            <div class="skill-logo-wrap">
+                <img src="assets/images/python.png" alt="Python" class="skill-logo"/>
+            </div>
+            <h4>Python</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- C++ / C -->
+          <div class="skill-grid-card c">
+            <div class="skill-logo-wrap">
+                <img src="assets/images/c.png" alt="C / C++" class="skill-logo"/>
+            </div>
+            <h4>C / C++</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- TypeScript / JS -->
+          <div class="skill-grid-card typescript">
+            <div class="skill-logo-wrap">
+                <img src="assets/images/Typescript.png" alt="TypeScript" class="skill-logo"/>
+            </div>
+            <h4>TypeScript</h4>
+            <span class="skill-grid-level">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Databases -->
+        <div class="skills-tab-content" id="tab-frameworks">
+          <!-- Spring Boot -->
+          <div class="skill-grid-card springboot">
+            <div class="skill-logo-wrap">
+              <svg viewBox="0 0 24 24" fill="#6DB33F" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 14.5c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5zm.364-7.236l-2.959 2.948c-.256.256-.671.256-.927 0s-.256-.671 0-.927l3.422-3.409c.256-.256.671-.256.927 0s.256.671 0 .927l-.464-.464z"/></svg>
+            </div>
+            <h4>Spring Boot</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- React -->
+          <div class="skill-grid-card react">
+            <div class="skill-logo-wrap">
+              <svg viewBox="0 0 24 24" fill="#61DAFB" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/></svg>
+            </div>
+            <h4>React.js</h4>
+            <span class="skill-grid-level">Intermediate</span>
+          </div>
+          <!-- MySQL -->
+          <div class="skill-grid-card mysql">
+            <div class="skill-logo-wrap">
+              <span style="font-family: var(--font-mono); font-weight: 800; color: #00758f; font-size: 1.1rem;">SQL</span>
+            </div>
+            <h4>MySQL</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- MongoDB -->
+          <div class="skill-grid-card mongodb">
+            <div class="skill-logo-wrap">
+              <svg viewBox="0 0 24 24" fill="#47A248" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            </div>
+            <h4>MongoDB</h4>
+            <span class="skill-grid-level">Intermediate</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skills-tab-content" id="tab-tools">
+          <!-- Git -->
+          <div class="skill-grid-card git">
+            <div class="skill-logo-wrap">
+              <svg viewBox="0 0 24 24" fill="#F05032" xmlns="http://www.w3.org/2000/svg"><path d="M2.6 10.5l8.9-8.9c.4-.4 1-.4 1.4 0l8.9 8.9c.4.4.4 1 0 1.4l-8.9 8.9c-.4.4-1.4.4-1.8 0L2.6 11.9c-.4-.4-.4-1 0-1.4z"/></svg>
+            </div>
+            <h4>Git / GitHub</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- Tailwind CSS -->
+          <div class="skill-grid-card tailwind">
+            <div class="skill-logo-wrap">
+              <svg viewBox="0 0 24 24" fill="#38BDF8" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+            </div>
+            <h4>Tailwind CSS</h4>
+            <span class="skill-grid-level">Intermediate</span>
+          </div>
+          <!-- Postman -->
+          <div class="skill-grid-card postman">
+            <div class="skill-logo-wrap">
+              <span style="font-family: var(--font-mono); font-weight: 800; color: #ff6c37; font-size: 1.1rem;">API</span>
+            </div>
+            <h4>Postman / REST</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+          <!-- Pygame Engine -->
+          <div class="skill-grid-card pygame">
+            <div class="skill-logo-wrap">
+              <span style="font-family: var(--font-mono); font-weight: 800; color: #f15a24; font-size: 1.1rem;">PYG</span>
+            </div>
+            <h4>Pygame Engine</h4>
+            <span class="skill-grid-level">Advanced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS & CERTIFICATIONS -->
+  <section class="section-padding reveal" id="achievements">
+    <div class="container">
+      <div class="section-header">
+        <h2>Honors & Credentials</h2>
+        <p>Verified Accomplishments & Dynamic Professional Badges</p>
+      </div>
+
+      <div class="achievements-grid">
+        <!-- Hackathon -->
+        <div class="glass-card achievement-card">
+          <div class="ach-icon-box">🏆</div>
+          <div class="ach-card-content">
+            <div class="ach-meta-row">
+              <span class="ach-organization">Smart India Hackathon 2025</span>
+              <!-- Exact Extracted PDF Drive Link -->
+              <a href="https://drive.google.com/file/d/1kNQuf_7P3166GUV2dwE6wwGRwu3_-Tkj/view" target="_blank" class="ach-proof-btn">
+                Verify ↗
+              </a>
+            </div>
+            <h4>Global Top 6 Finalist</h4>
+            <p class="ach-desc">
+              Engineered an automated hardware-software prototype selected among the top 6 national solutions globally in the SIH 2025 finals.
+            </p>
+          </div>
+        </div>
+
+        <!-- Shaastra IIT Madras -->
+        <div class="glass-card achievement-card">
+          <div class="ach-icon-box">💡</div>
+          <div class="ach-card-content">
+            <div class="ach-meta-row">
+              <span class="ach-organization">IIT Madras Shaastra 2026</span>
+              <!-- Exact Extracted PDF Drive Link -->
+              <a href="https://drive.google.com/file/d/1mrXdPJo8EHoGWxT4SLQwxyHyRdXtRX-P/view" target="_blank" class="ach-proof-btn">
+                Verify ↗
+              </a>
+            </div>
+            <h4>CP Potpourri Finalist</h4>
+            <p class="ach-desc">
+              Ranked in the <strong>Top 1% globally</strong> out of numerous elite teams in the high-intensity competitive programming tournament at Shaastra.
+            </p>
+          </div>
+        </div>
+
+        <!-- Infinity Relay -->
+        <div class="glass-card achievement-card">
+          <div class="ach-icon-box">🔢</div>
+          <div class="ach-card-content">
+            <div class="ach-meta-row">
+              <span class="ach-organization">National Mathematics Symposium</span>
+              <!-- Exact Extracted PDF Drive Link -->
+              <a href="https://drive.google.com/file/d/1R09r5pEjbHP3e3s7BTf_KUiIGFK_zFED/view" target="_blank" class="ach-proof-btn">
+                Verify ↗
+              </a>
+            </div>
+            <h4>3rd Place - Infinity Relay</h4>
+            <p class="ach-desc">
+              Awarded 3rd place in the speed mathematical relay event testing advanced analytic structures and combinatorial speed.
+            </p>
+          </div>
+        </div>
+
+        <!-- Udemy Certificate -->
+        <div class="glass-card achievement-card">
+          <div class="ach-icon-box">📜</div>
+          <div class="ach-card-content">
+            <div class="ach-meta-row">
+              <span class="ach-organization">Udemy Credential</span>
+              <a href="https://www.udemy.com/" target="_blank" class="ach-proof-btn">
+                Credential ↗
+              </a>
+            </div>
+            <h4>Java Programming Masterclass</h4>
+            <p class="ach-desc">
+              Completed comprehensive training covering professional structures, multi-threading, database management, and robust networking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & SOCIALS -->
+  <section class="section-padding reveal" id="contact" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Let's collaborate on software or engineering challenges</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 style="font-size: 1.8rem; letter-spacing: -0.5px;">Let's Connect</h3>
+          <p class="contact-info-desc">
+            I am currently looking for software development internship roles for 2026/2027. If you have an exciting project or want to chat about DSA, drop me a message!
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-icon-box">📧</div>
+              <div class="contact-text-box">
+                <h5>Email</h5>
+                <!-- Updated Email Address -->
+                <p><a href="mailto:rammlakshmanan@gmail.com">rammlakshmanan@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-box">📍</div>
+              <div class="contact-text-box">
+                <h5>Location</h5>
+                <p>Chennai, Tamil Nadu, India</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- "WE CONNECT" SOCIAL TAB -->
+          <div class="we-connect-widget">
+            <h4 class="we-connect-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="stroke-width: 2.5; color: var(--color-accent-primary);">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+              We Connect
+            </h4>
+            <div class="we-connect-grid">
+              <!-- LinkedIn Card -->
+              <div class="connect-card linkedin">
+                <div class="connect-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                  </svg>
+                </div>
+                <h6>LinkedIn</h6>
+                <p>ramm-lakshmanan-787642326</p>
+                <a href="https://linkedin.com/in/ramm-lakshmanan-787642326" target="_blank" class="connect-btn" aria-label="LinkedIn Profile">Follow</a>
+              </div>
+              
+              <!-- GitHub Card -->
+              <div class="connect-card github">
+                <div class="connect-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                  </svg>
+                </div>
+                <h6>GitHub</h6>
+                <p>@Ramm-Lakshmanan</p>
+                <a href="https://github.com/Ramm-Lakshmanan" target="_blank" class="connect-btn" aria-label="GitHub Profile">Follow</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card contact-form">
+          <form id="portfolio-contact-form">
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" class="form-input" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <input type="email" id="form-email" class="form-input" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" class="form-input" placeholder="Tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary ripple-btn" style="margin-top: 1rem;">
+              Send Message
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="stroke-width: 2;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+            <div id="form-status" class="form-status" style="margin-top: 1rem;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <span class="logo-badge">RL</span>
+            <span class="logo-text">Ramm Lakshmanan</span>
+          </a>
+          <p class="footer-brand-desc">
+            Computer Science undergraduate at SSN and Software Engineer Intern, passionate about algorithms, robust systems, and live developer diagnostics.
+          </p>
+        </div>
+        
+        <div class="footer-links-grid">
+          <!-- Quick Links -->
+          <div class="footer-links-col">
+            <h5>Navigation</h5>
+            <div class="footer-quick-list">
+              <a href="#home" class="footer-quick-link">Home</a>
+              <a href="#about" class="footer-quick-link">About</a>
+              <a href="#experience" class="footer-quick-link">Experience</a>
+              <a href="#projects" class="footer-quick-link">Projects</a>
+            </div>
+          </div>
+          
+          <div class="footer-links-col">
+            <h5>Technical</h5>
+            <div class="footer-quick-list">
+              <a href="#coding-dashboard" class="footer-quick-link">Coding Dashboard</a>
+              <a href="#skills" class="footer-quick-link">Skills Stack</a>
+              <a href="#achievements" class="footer-quick-link">Honors</a>
+              <a href="#contact" class="footer-quick-link">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copyright">
+          &copy; 2026 Ramm Lakshmanan. Built with high-fidelity native architectures.
+        </span>
+        <div class="footer-socials">
+          <a href="https://github.com/Ramm-Lakshmanan" target="_blank" class="footer-social-link" title="Follow on GitHub" aria-label="GitHub Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/ramm-lakshmanan-787642326" target="_blank" class="footer-social-link" title="Follow on LinkedIn" aria-label="LinkedIn Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+            </svg>
+          </a>
+          <a href="https://codolio.com/profile/Ramm_Lakshmanan" target="_blank" class="footer-social-link" title="Follow on Codolio" aria-label="Codolio Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
