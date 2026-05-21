@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileMenuBtn && navLinksContainer) {
         mobileMenuBtn.addEventListener("click", () => {
             navLinksContainer.classList.toggle("active");
-            
+
             // Toggle hamburger icon between ☰ and ✕
             if (navLinksContainer.classList.contains("active")) {
                 mobileMenuBtn.innerHTML = "&#x2715;"; // ✕ Close symbol
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!typingTextEl) return;
 
         const currentWord = words[wordIndex];
-        
+
         if (isDeleting) {
             // Remove character
             typingTextEl.textContent = currentWord.substring(0, charIndex - 1);
@@ -150,12 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 6. SCROLL REVEAL EFFECTS (IntersectionObserver)
     const revealElements = document.querySelectorAll(".reveal");
-    
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                
+
                 // If it contains Leetcode easy/medium/hard bars, animate them
                 const lcBars = entry.target.querySelectorAll(".lc-bar-fill");
                 lcBars.forEach(bar => {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add active class to clicked button
             btn.classList.add("active");
-            
+
             // Show corresponding content
             const targetContent = document.getElementById(tabId);
             if (targetContent) {
@@ -203,28 +203,20 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener('click', createRipple);
     });
 
-    // 9. Coursework & Subjects Toggle Logic
+    // 10. Coursework Expand/Collapse Logic
     const collegeToggle = document.getElementById('college-coursework-toggle');
     const collegeList = document.getElementById('college-coursework');
+    if (collegeToggle && collegeList) {
+        collegeToggle.addEventListener('click', () => {
+            collegeList.classList.toggle('show');
+            collegeToggle.textContent = collegeList.classList.contains('show') ? 'Hide Coursework' : 'Show Coursework';
+        });
+    }
     const schoolToggle = document.getElementById('school-coursework-toggle');
     const schoolList = document.getElementById('school-coursework');
-
-    if (collegeToggle && collegeList && schoolToggle && schoolList) {
-        // Toggle college coursework list
-        collegeToggle.addEventListener('click', () => {
-            const isHidden = collegeList.classList.toggle('hidden'); // toggle hidden
-            collegeToggle.textContent = isHidden ? 'Show Coursework' : 'Hide Coursework';
-            // Ensure school list is hidden when showing coursework
-            if (!isHidden) {
-                schoolList.classList.add('hidden');
-                schoolToggle.textContent = 'Show Subjects';
-            }
-        });
-        // Toggle school subjects list
+    if (schoolToggle && schoolList) {
         schoolToggle.addEventListener('click', () => {
-                collegeList.classList.remove('show');
-                collegeToggle.textContent = 'Show Coursework';
-            }
+            schoolList.classList.toggle('show');
             schoolToggle.textContent = schoolList.classList.contains('show') ? 'Hide Subjects' : 'Show Subjects';
         });
     }
@@ -255,14 +247,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // Simulate sending message
             const submitBtn = contactForm.querySelector("button[type='submit']");
             const originalBtnText = submitBtn.innerHTML;
-            
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = "Sending Message...";
 
             setTimeout(() => {
                 formStatus.className = "form-status success";
                 formStatus.textContent = `Thank you, ${name}! Your message has been sent successfully. I will get back to you soon.`;
-                
+
                 // Reset Form
                 contactForm.reset();
                 submitBtn.disabled = false;

@@ -76,7 +76,7 @@ function updateDashboardUI() {
     safeSetText("lc-rating", lc.rating);
     safeSetText("lc-ranking", lc.ranking);
     safeSetText("lc-acceptance", lc.acceptance);
-    
+
     safeSetText("lc-easy-num", lc.easy);
     safeSetText("lc-medium-num", lc.medium);
     safeSetText("lc-hard-num", lc.hard);
@@ -92,11 +92,9 @@ function updateDashboardUI() {
     safeSetWidth("lc-hard-bar", `${hardPct}%`);
 
     // Circular progress ring logic (dashoffset)
-    // Circumference of 90px ring with radius 40 = 2 * PI * 40 ≈ 251.2
     const lcRing = document.getElementById("lc-ring-fill");
     if (lcRing) {
         const circumference = 251.2;
-        // Map solved to an arbitrary total goal of 500 solved
         const goal = 500;
         const ratio = Math.min(lc.solved / goal, 1);
         const offset = circumference - (ratio * circumference);
@@ -172,9 +170,12 @@ async function syncCodingProfiles() {
 
     let anySuccess = false;
 
-    // 1. Fetch LeetCode Stats (Trying primary Stats API proxy)
+    // 1. Fetch LeetCode Stats (Patched via AllOrigins Proxy to resolve CORS block)
     try {
-        const lcResponse = await fetch(`https://leetcode-stats-api.herokuapp.com/${stats.leetcode.handle}`);
+        const targetUrl = `https://leetcode-stats-api.herokuapp.com/${stats.leetcode.handle}`;
+        const proxyUrl = `https://allorigins.win{encodeURIComponent(targetUrl)}`;
+
+        const lcResponse = await fetch(proxyUrl);
         if (lcResponse.ok) {
             const lcData = await lcResponse.json();
             if (lcData.status === "success") {
@@ -213,60 +214,45 @@ async function syncCodingProfiles() {
         console.warn("Could not sync Codeforces user info:", e);
     }
 
-    // 3. Fetch Codeforces status (recalculate actual unique solved problems!)
+    // 3. Fetch Codeforces status (Recalculate unique solved problems)
     try {
         const cfStatusResponse = await fetch(`https://codeforces.com/api/user.status?handle=${stats.codeforces.handle}`);
         if (cfStatusResponse.ok) {
             const cfStatusData = await cfStatusResponse.json();
             if (cfStatusData.status === "OK" && cfStatusData.result) {
-                // Filter unique problems solved (verdict === OK)
-                const solvedProblems = new Set();
+                const uniqueSolved = new Set();
                 cfStatusData.result.forEach(submission => {
                     if (submission.verdict === "OK" && submission.problem) {
-                        const probId = `${submission.problem.contestId}-${submission.problem.index}`;
-                        solvedProblems.add(probId);
+                        const problemId = `${submission.problem.contestId}-${submission.problem.index}`;
+                        uniqueSolved.add(problemId);
                     }
                 });
-                if (solvedProblems.size > 0) {
-                    stats.codeforces.solved = solvedProblems.size;
-                    anySuccess = true;
-                    console.log(`Codeforces recalculated unique solved problems: ${solvedProblems.size}`);
-                }
+                stats.codeforces.solved = uniqueSolved.size;
+                anySuccess = true;
+                console.log(`Codeforces unique solved items synced: ${uniqueSolved.size}`);
             }
         }
     } catch (e) {
-        console.warn("Could not sync Codeforces status unique count:", e);
+        console.warn("Could not sync Codeforces unique solved statistics:", e);
     }
 
-    // 4. CodeChef / GFG Mock Updates
-    // Simulate query parsing to complete live sync
-    try {
-        await new Promise(resolve => setTimeout(resolve, 800));
-        anySuccess = true;
-    } catch (e) {}
-
-    // Save and UI Refresh
+    // Save tracking metadata if updates succeeded
     if (anySuccess) {
-        stats.lastUpdated = new Date().getTime();
+        stats.lastUpdated = Date.now();
         localStorage.setItem(CACHE_KEY, JSON.stringify(stats));
         updateDashboardUI();
-        
-        if (statusText) statusText.textContent = "All Profiles Synced";
-    } else {
-        if (statusText) statusText.textContent = "Synced (Cached)";
     }
 
     if (statusPulse) statusPulse.classList.remove("syncing");
+    if (statusText) statusText.textContent = "Sync Complete";
 }
 
-// Set up event listeners
+// Initial self-start execution on script load
 document.addEventListener("DOMContentLoaded", () => {
     initStats();
-    
-    // Automatic background sync after page loads
-    setTimeout(() => {
-        syncCodingProfiles();
-    }, 1500);
+    // Throttle background sync invocation to avoid API rate limiting
+    setTimeout(syncCodingProfiles, 1500);
+
 
     // Manual sync button trigger
     const syncBtn = document.getElementById("manual-sync-btn");
