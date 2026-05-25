@@ -87,18 +87,36 @@ function updateDashboardUI() {
     const mediumPct = ((lc.medium / lcTotal) * 100).toFixed(1);
     const hardPct = ((lc.hard / lcTotal) * 100).toFixed(1);
 
-    safeSetWidth("lc-easy-bar", `${easyPct}%`);
-    safeSetWidth("lc-medium-bar", `${mediumPct}%`);
-    safeSetWidth("lc-hard-bar", `${hardPct}%`);
+    const dashboardSection = document.getElementById("coding-dashboard");
+    const isDashboardActive = dashboardSection && dashboardSection.classList.contains("active");
 
-    // Circular progress ring logic (dashoffset)
+    const easyBar = document.getElementById("lc-easy-bar");
+    const mediumBar = document.getElementById("lc-medium-bar");
+    const hardBar = document.getElementById("lc-hard-bar");
+
+    if (easyBar) {
+        easyBar.setAttribute("data-width", `${easyPct}%`);
+        if (isDashboardActive) easyBar.style.width = `${easyPct}%`;
+    }
+    if (mediumBar) {
+        mediumBar.setAttribute("data-width", `${mediumPct}%`);
+        if (isDashboardActive) mediumBar.style.width = `${mediumPct}%`;
+    }
+    if (hardBar) {
+        hardBar.setAttribute("data-width", `${hardPct}%`);
+        if (isDashboardActive) hardBar.style.width = `${hardPct}%`;
+    }
+
+    // Circular progress ring logic (dashoffset) — only set data-offset here.
+    // The actual animation is triggered by the IntersectionObserver in main.js when scrolled into view.
     const lcRing = document.getElementById("lc-ring-fill");
     if (lcRing) {
         const circumference = 251.2;
         const goal = 500;
         const ratio = Math.min(lc.solved / goal, 1);
         const offset = circumference - (ratio * circumference);
-        lcRing.style.strokeDashoffset = offset;
+        lcRing.setAttribute("data-offset", offset);
+        // Do NOT set strokeDashoffset here — let the scroll observer handle it
     }
 
     // 2. CODEFORCES UI

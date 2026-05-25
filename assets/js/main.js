@@ -155,15 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-
-                // If it contains Leetcode easy/medium/hard bars, animate them
-                const lcBars = entry.target.querySelectorAll(".lc-bar-fill");
-                lcBars.forEach(bar => {
-                    const width = bar.getAttribute("data-width");
-                    bar.style.width = width;
-                });
-
-                // Unobserve once revealed
                 observer.unobserve(entry.target);
             }
         });
@@ -172,9 +163,148 @@ document.addEventListener("DOMContentLoaded", () => {
         rootMargin: "0px 0px -50px 0px"
     });
 
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 6a. DEDICATED OBSERVER: Funny Logs — triggers when About section scrolls into view
+    const aboutSection = document.getElementById("about");
+    const logsOutput = document.getElementById("funny-logs-output");
+    let logsStarted = false;
+
+    const runFunnyLogs = () => {
+        if (!logsOutput || logsStarted) return;
+        logsStarted = true;
+
+        const funnySnippets = [
+            // snippet 1 lines
+            [
+                { text: "> Initialize coffee.exe...",   color: "inherit"  },
+                { text: "[OK] 404 Coffee Not Found. Brain functioning at 20%.", color: "#10b981" },
+                { text: "> git commit -m 'it works, don\\'t touch it'", color: "inherit" },
+                { text: "[WARN] 47 uncommitted changes ignored.", color: "#f59e0b" },
+                { text: "> npm install",                color: "inherit"  },
+                { text: "[ERROR] 823 vulnerabilities found.", color: "#ef4444" },
+            ],
+            // snippet 2 lines (cycles after first set completes)
+            [
+                { text: "> Compiling code...",          color: "inherit"  },
+                { text: "[ERROR] Missing semicolon at line 42.", color: "#ef4444" },
+                { text: "> Fixing semicolon...",        color: "inherit"  },
+                { text: "[ERROR] 105 new errors appeared.", color: "#ef4444" },
+                { text: "> StackOverflow: 'how to center a div'", color: "inherit" },
+                { text: "[SUCCESS] Div centered. App crashed.", color: "#10b981" },
+            ],
+            // snippet 3 lines
+            [
+                { text: "> git push --force origin main", color: "inherit" },
+                { text: "[WARN] You have been removed from the repo.", color: "#f59e0b" },
+                { text: "> sudo make me a sandwich",   color: "inherit"  },
+                { text: "[OK] Sandwich deployed to production.", color: "#10b981" },
+                { text: "> while(alive) { work(); sleep(4); }", color: "inherit" },
+                { text: "[INFO] Engineer loop started. Exit code: never.", color: "#38bdf8" },
+            ]
+        ];
+
+        let snippetIdx = 0;
+        let lineIdx = 0;
+        let charIdx = 0;
+        let currentEl = null;
+
+        const typeChar = () => {
+            const snippet = funnySnippets[snippetIdx];
+
+            if (lineIdx >= snippet.length) {
+                // Done with this snippet — pause then cycle to next
+                setTimeout(() => {
+                    logsOutput.innerHTML = "";
+                    snippetIdx = (snippetIdx + 1) % funnySnippets.length;
+                    lineIdx = 0;
+                    charIdx = 0;
+                    currentEl = null;
+                    typeChar();
+                }, 4000);
+                return;
+            }
+
+            const currentLine = snippet[lineIdx];
+
+            if (charIdx === 0) {
+                currentEl = document.createElement("div");
+                currentEl.style.cssText = `margin: 0.25rem 0; color: ${currentLine.color}; line-height: 1.5;`;
+                logsOutput.appendChild(currentEl);
+            }
+
+            if (charIdx < currentLine.text.length) {
+                currentEl.textContent += currentLine.text.charAt(charIdx);
+                charIdx++;
+                setTimeout(typeChar, Math.random() * 25 + 18);
+            } else {
+                // Line done — pause then next line
+                charIdx = 0;
+                lineIdx++;
+                setTimeout(typeChar, 900);
+            }
+        };
+
+        setTimeout(typeChar, 400);
+    };
+
+    if (aboutSection) {
+        const aboutObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runFunnyLogs();
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        aboutObserver.observe(aboutSection);
+    }
+
+    // 6b. DEDICATED OBSERVER: LeetCode Dashboard Animations
+    const dashboardSection = document.getElementById("coding-dashboard");
+
+    if (dashboardSection) {
+        const dashboardObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Delay slightly so dashboard.js has set data-offset
+                    setTimeout(() => {
+                        // Animate bars
+                        dashboardSection.querySelectorAll(".lc-bar-fill").forEach(bar => {
+                            const w = bar.getAttribute("data-width");
+                            if (w) {
+                                bar.style.transition = "width 1.2s ease-out";
+                                bar.style.width = w;
+                            }
+                        });
+
+                        // Animate circular ring
+                        const lcRing = document.getElementById("lc-ring-fill");
+                        if (lcRing) {
+                            // Read the offset set by dashboard.js (or compute from known stats)
+                            let targetOffset = parseFloat(lcRing.getAttribute("data-offset"));
+                            if (isNaN(targetOffset)) {
+                                // Fallback: 358 solved / 500 goal * 251.2 circumference
+                                const circumference = 251.2;
+                                targetOffset = circumference - (358 / 500) * circumference;
+                            }
+                            // Reset to full (invisible) then animate to target
+                            lcRing.style.transition = "none";
+                            lcRing.style.strokeDashoffset = "251.2";
+                            // Force reflow then animate
+                            void lcRing.getBoundingClientRect();
+                            lcRing.style.transition = "stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1)";
+                            lcRing.style.strokeDashoffset = targetOffset;
+                        }
+                    }, 350);
+
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        dashboardObserver.observe(dashboardSection);
+    }
 
     // 7. SKILLS TABS TOGGLER
     const tabBtns = document.querySelectorAll(".tab-btn");
@@ -183,90 +313,21 @@ document.addEventListener("DOMContentLoaded", () => {
     tabBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const tabId = btn.getAttribute("data-tab");
-
-            // Remove active classes
             tabBtns.forEach(b => b.classList.remove("active"));
             tabContents.forEach(c => c.classList.remove("active"));
-
-            // Add active class to clicked button
             btn.classList.add("active");
-
-            // Show corresponding content
             const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add("active");
-            }
+            if (targetContent) targetContent.classList.add("active");
         });
     });
-    // 9. Ripple Effect Integration for all .ripple-btn elements
+
+    // 8. Ripple Effect
     document.querySelectorAll('.ripple-btn, .tab-btn').forEach(btn => {
         btn.addEventListener('click', createRipple);
     });
 
-    // 10. Coursework Expand/Collapse Logic
-    const collegeToggle = document.getElementById('college-coursework-toggle');
-    const collegeList = document.getElementById('college-coursework');
-    if (collegeToggle && collegeList) {
-        collegeToggle.addEventListener('click', () => {
-            collegeList.classList.toggle('show');
-            collegeToggle.textContent = collegeList.classList.contains('show') ? 'Hide Coursework' : 'Show Coursework';
-        });
-    }
-    const schoolToggle = document.getElementById('school-coursework-toggle');
-    const schoolList = document.getElementById('school-coursework');
-    if (schoolToggle && schoolList) {
-        schoolToggle.addEventListener('click', () => {
-            schoolList.classList.toggle('show');
-            schoolToggle.textContent = schoolList.classList.contains('show') ? 'Hide Subjects' : 'Show Subjects';
-        });
-    }
-
-    // 8. CONTACT FORM SUBMISSION SIMULATION
-    const contactForm = document.getElementById("portfolio-contact-form");
-    const formStatus = document.getElementById("form-status");
-
-    if (contactForm && formStatus) {
-        contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            // Fetch form fields
-            const name = document.getElementById("form-name").value;
-            const email = document.getElementById("form-email").value;
-            const message = document.getElementById("form-message").value;
-
-            if (!name || !email || !message) {
-                formStatus.className = "form-status";
-                formStatus.style.display = "block";
-                formStatus.style.background = "rgba(239, 68, 68, 0.1)";
-                formStatus.style.border = "1px solid rgba(239, 68, 68, 0.2)";
-                formStatus.style.color = "#ef4444";
-                formStatus.textContent = "Please fill in all required fields.";
-                return;
-            }
-
-            // Simulate sending message
-            const submitBtn = contactForm.querySelector("button[type='submit']");
-            const originalBtnText = submitBtn.innerHTML;
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = "Sending Message...";
-
-            setTimeout(() => {
-                formStatus.className = "form-status success";
-                formStatus.textContent = `Thank you, ${name}! Your message has been sent successfully. I will get back to you soon.`;
-
-                // Reset Form
-                contactForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-
-                // Hide status after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = "none";
-                }, 5000);
-            }, 1200);
-        });
-    }
+    // 9. CONTACT FORM — Web3Forms handled via HTML POST action.
 
     console.log("%c[RL] Ramm Lakshmanan Developer Desk Initialized.", "color: #2563eb; font-size: 14px; font-weight: bold;");
 });
+
